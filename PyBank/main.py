@@ -16,9 +16,8 @@ with open(budget_csv, 'r') as csvfile:
     #set values to 0
     total_months = 0
     net_total = 0
-    previous_profit = 0
-    greatest_increase = 0
-    greatest_decrease = 0
+    previous_rev = 0
+
 
 
 
@@ -35,37 +34,53 @@ with open(budget_csv, 'r') as csvfile:
         total_months += 1
         net_total += current_profit
 
-        #track change- ask why this is necessary
-        change = current_profit - previous_profit
-        profit.append(change)
+        #track change
+        if previous_rev != 0 :
+            change = current_profit - previous_rev
+            profit.append(change)
+            all_months.append(row[0])
+            total_change = change - previous_rev
 
-        #Save current month for greatest increase/decrease
-        all_months.append(current_months)
+        previous_rev = current_profit
+
+
+
+    #calc avg change
+    average_change = total_change/ (total_months-1)
 
      
     
 #find greatest increase
     greatest_increase = max(profit)
-    greatest_increase_index = profit.index(greatest_increase)
-    greatest_month = all_months[greatest_increase_index]
+    greatest_increase_month = all_months[profit.index(greatest_increase)]
+
+
+
 
 #find greatest decrease
     greatest_decrease = min(profit)
-    greatest_decrease_index = profit.index(greatest_decrease)
-    lowest_month = all_months[greatest_decrease_index]
+    greatest_decrease_month = all_months[profit.index(greatest_decrease)]
 
 
-#calculate average change
-    average_change= sum(profit)/len(profit)
 
-#print outcomes
-    print(f"Financial Analysis")
-    print(f"----------------------------")
-    print(f'Total Months: {total_months}')
-    print(f'Total: ${net_total} ')
-    print(f'Average Change: ${average_change}')
-    print(f'Greatest Increase in Profits: {greatest_month} ${greatest_increase}')
-    print(f'Greatest Decrease in Profits: {lowest_month} ${greatest_decrease}')
+#create and print output
+output = (
+    f"Financial Analysis"
+    f"----------------------------"
+    f'Total Months: {total_months}'
+    f'Total: ${net_total} '
+    f'Average Change: ${average_change} '
+    f'Greatest Increase in Profits: {greatest_increase_month} ${greatest_increase} '
+    f'Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}')
+
+print(output)
+
+#export file to .txt
+output_file = "PyBank/result.txt"
+with open(output_file, "w") as f:
+    f.write(output)
+
+
 
 
 
