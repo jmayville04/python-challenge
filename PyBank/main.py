@@ -44,9 +44,9 @@ with open(budget_csv, 'r') as csvfile:
         previous_rev = current_profit
 
 
-
     #calc avg change
-    average_change = total_change/ (total_months-1)
+    average_change = total_change / (total_months-1)
+ 
 
      
     
@@ -65,13 +65,14 @@ with open(budget_csv, 'r') as csvfile:
 
 #create and print output
 output = (
-    f"Financial Analysis"
-    f"----------------------------"
-    f'Total Months: {total_months}'
-    f'Total: ${net_total} '
-    f'Average Change: ${average_change} '
-    f'Greatest Increase in Profits: {greatest_increase_month} ${greatest_increase} '
-    f'Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}')
+    f"Financial Analysis\n"
+    f"----------------------------\n"
+    f'Total Months: {total_months}\n'
+    f'Total: ${net_total}\n'
+    f'Average Change: ${average_change}\n'
+    f'Greatest Increase in Profits: {greatest_increase_month} ${greatest_increase}\n'
+    f'Greatest Decrease in Profits: {greatest_decrease_month} ${greatest_decrease}\n'
+    )
 
 print(output)
 
