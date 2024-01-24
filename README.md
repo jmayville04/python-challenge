@@ -1,3 +1,5 @@
+I worked with my peers Kiet Hoang, Mike Pointek, Patrick Dean, Katie Ballinger, Victor Martin-Nelson, Kyle Tener, and Sarah Schilling in developing this the python files and scripts. I also received guidance from my instructors
+I adapted code from [https://github.com/emmanuelmartinezs/stock-analysis.git](https://github.com/svafaeva93/python-challenge/blob/main/PyBank/main.py) to assist and develop my solutions for the challenge. 
 
 
 Background
